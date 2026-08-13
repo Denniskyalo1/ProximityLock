@@ -1,6 +1,3 @@
-Here's just the file — copy this entire block into `README.md`, replacing everything currently in it.
-
-```markdown
 # ProximityLock
 
 Automatically locks your Windows laptop when your phone goes out of Bluetooth range, and shuts the laptop down if it stays out of range too long. Your phone acts as a physical "key" — no app required on the phone, just an existing Bluetooth pairing.
@@ -19,11 +16,9 @@ The script polls your phone's live Bluetooth connection status using the Windows
 
 ### 1. Clone the repo and install dependencies
 
-```powershell
-git clone https://github.com/Denniskyalo1/ProximityLock.git
-cd ProximityLock
-pip install -r requirements.txt
-```
+    git clone https://github.com/Denniskyalo1/ProximityLock.git
+    cd ProximityLock
+    pip install -r requirements.txt
 
 ### 2. Pair your phone with your laptop
 
@@ -33,15 +28,11 @@ Go to **Settings → Bluetooth & devices → Add device** on your laptop, and pa
 
 Open PowerShell and run:
 
-```powershell
-Get-PnPDevice -Class Bluetooth | Select-Object FriendlyName, Status, InstanceId | Format-Table -AutoSize
-```
+    Get-PnPDevice -Class Bluetooth | Select-Object FriendlyName, Status, InstanceId | Format-Table -AutoSize
 
 Look through the list for the row where `FriendlyName` matches your phone's name. The `InstanceId` column will contain something like:
 
-```
-BTHENUM\DEV_28024443D815\...
-```
+    BTHENUM\DEV_28024443D815\...
 
 Take the 12 characters after `DEV_` (in this example, `28024443D815`) and prefix them with `0x` — that gives you `0x28024443D815`. This is your `PHONE_ADDRESS`.
 
@@ -49,21 +40,15 @@ Take the 12 characters after `DEV_` (in this example, `28024443D815`) and prefix
 
 Copy the example file:
 
-```powershell
-copy .env.example .env
-```
+    copy .env.example .env
 
 Open `.env` and set your phone's address:
 
-```
-PHONE_ADDRESS=0xYOURADDRESSHERE
-```
+    PHONE_ADDRESS=0xYOURADDRESSHERE
 
 ### 5. Test it manually
 
-```powershell
-python proximity_lock.py
-```
+    python proximity_lock.py
 
 Leave your phone connected for a bit, then turn its Bluetooth off (or walk away with it) and confirm the laptop locks after a few missed checks, then shuts down if it stays disconnected. Stop the script anytime with `Ctrl+C`.
 
@@ -105,4 +90,3 @@ With the defaults, a lock happens roughly 30 seconds after the phone leaves rang
 ## Disclaimer
 
 This shuts your laptop down automatically based on Bluetooth signal — test thoroughly with your own devices before relying on it daily, and make sure you're comfortable with the lock/shutdown timing before leaving it running unattended.
-```
