@@ -1,4 +1,3 @@
-Here's just the file — copy this entire block into `README.md`, replacing everything currently in it.
 
 ```markdown
 # ProximityLock
