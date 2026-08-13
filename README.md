@@ -1,3 +1,5 @@
+
+```markdown
 # ProximityLock
 
 Automatically locks your Windows laptop when your phone goes out of Bluetooth range, and shuts the laptop down if it stays out of range too long. Your phone acts as a physical "key" — no app required on the phone, just an existing Bluetooth pairing.
@@ -90,3 +92,4 @@ With the defaults, a lock happens roughly 30 seconds after the phone leaves rang
 ## Disclaimer
 
 This shuts your laptop down automatically based on Bluetooth signal — test thoroughly with your own devices before relying on it daily, and make sure you're comfortable with the lock/shutdown timing before leaving it running unattended.
+```
